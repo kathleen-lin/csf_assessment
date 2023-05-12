@@ -1,0 +1,21 @@
+<form [formGroup]="form" method="post" (ngSubmit)="postForm()" enctype="multipart/form-data">
+    <label for="name">Name: </label>
+    <input type="text" formControlName="name" id="">
+    <br>
+
+    <label for="title">Title: </label>
+    <input type="text" formControlName="title" id="">
+    <br>
+
+    <label for="comments">Comments: </label>
+    <input type="text" formControlName="comments" id="">
+    <br>
+
+    <label for="archive">Archive: </label>
+    <input type="file" formControlName="archive" accept=".zip" #file>
+    
+    <br>
+
+    <button>Cancel</button>
+    <button type="submit" [disabled]="!form.valid"> Submit</button>
+</form>
