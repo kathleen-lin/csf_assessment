@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Bundle } from '../model';
 
 @Component({
   selector: 'app-list',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ListComponent {
 
+  listOfBundle!: Bundle[]
 }

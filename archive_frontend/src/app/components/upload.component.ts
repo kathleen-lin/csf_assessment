@@ -34,8 +34,12 @@ export class UploadComponent implements OnInit{
     formData.set("comments", this.form.get("comments")?.value)
     formData.set("archive", this.archiveFile.nativeElement.files[0])
     // console.log(formData.get("archive")) 
-    this.archiveService.postToBackend(formData).then(() => { this.router.navigate('[/]')})
+    this.archiveService.postToBackend(formData).then(() => { this.router.navigate(['/'])})
     
+  }
+
+  backHome() {
+    this.router.navigate(['/'])
   }
 
   

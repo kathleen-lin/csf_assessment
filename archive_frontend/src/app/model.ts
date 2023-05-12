@@ -5,3 +5,12 @@ export interface UploadGroup {
     archive: string
     
 }
+
+export interface Bundle {
+    bundleId: string
+    date: string
+    title: string
+    name: string
+    comments: string
+    url: string[]
+}

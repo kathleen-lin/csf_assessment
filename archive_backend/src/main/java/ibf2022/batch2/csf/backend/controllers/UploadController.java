@@ -1,7 +1,9 @@
 package ibf2022.batch2.csf.backend.controllers;
 
+import java.util.Optional;
 import java.util.UUID;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -9,16 +11,19 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import ibf2022.batch2.csf.backend.models.Bundle;
 import ibf2022.batch2.csf.backend.repositories.ArchiveRepository;
 import ibf2022.batch2.csf.backend.services.imageService;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping
 public class UploadController {
 
 	@Autowired
@@ -50,8 +55,26 @@ public class UploadController {
 	} 
 
 	// TODO: Task 5
+	@GetMapping ("/bundle/{bundleId}")
+	public ResponseEntity<String> getBundleById(@PathVariable("bundleId") String bundleId){
+
+		Optional<Document> optBundle = arcRepo.getBundleByBundleId(bundleId);
+
+		if (optBundle.isPresent()){
+			Document doc = optBundle.get();
+			// to json
+			return new ResponseEntity<String>(doc.toJson(), HttpStatus.OK);
+		}
+
+		return new ResponseEntity<String>("Archive not found", HttpStatus.NOT_FOUND);
+	}
+
 	
 
-	// TODO: Task 6
+	// // TODO: Task 6
+	// @GetMapping("/bundle")
+	// public ResponseEntity<String> getBundle(){
 
+		
+	// }
 }

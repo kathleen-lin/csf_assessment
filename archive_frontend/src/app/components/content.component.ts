@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class ContentComponent {
 
+  constructor(private activatedRoute: ActivatedRoute) {}
+  
 }
